@@ -1,5 +1,7 @@
 // Timothy Lin 29663818
 // Elizabeth Budi 83979146
+
+
 package com.example.appointments;
 
 import android.content.Intent;
@@ -52,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                listAdapter.sort(new Comparator<Appointment>() {
+                    @Override
+                    public int compare(Appointment lhs, Appointment rhs) {
+                        return rhs.compareTo(lhs);
+                    }
+                });
             }
 
             @Override
@@ -76,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void addAppointment(View view){
         Intent intent = new Intent(this, AddActivity.class);
+        startActivity(intent);
+    }
+
+    public void searchAppointment(View view){
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 }

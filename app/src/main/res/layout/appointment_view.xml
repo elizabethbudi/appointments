@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -12,15 +13,38 @@
         android:layout_marginRight="5dp"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/editTextDescription"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/editTextDescription"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/starOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@android:drawable/btn_star_big_off" />
+
+            <ImageView
+                android:id="@+id/starOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/editTextDate"
@@ -45,38 +69,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/editTextScore"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="15dp"    >
-            </TextView>
-
             <Button
-                android:id="@+id/buttonUp"
-                android:layout_width="35dp"
+                android:id="@+id/buttonFav"
+                android:layout_width="110dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="+" />
-
-
-            <Button
-                android:id="@+id/buttonDown"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-
-                android:text="-" />
+                android:text="Favorite" />
 
             <Button
                 android:id="@+id/buttonEdit"
@@ -101,7 +102,10 @@
         </LinearLayout>
 
 
+
+
     </LinearLayout>
+
 
 
 

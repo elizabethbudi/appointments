@@ -56,6 +56,42 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
         time.setText("Time: " + currentAppointment.getStart() + " - " + currentAppointment.getEnd());
 
 
+        final Button favorite = listItem.findViewById(R.id.buttonFav);
+        final ImageView starOff = (ImageView) listItem.findViewById(R.id.starOff);
+        final ImageView starOn = (ImageView) listItem.findViewById(R.id.starOn);
+
+        if(currentAppointment.getFav()) {
+            favorite.setText("Unfavorite");
+            starOff.setVisibility(View.GONE);
+            starOn.setVisibility(View.VISIBLE);
+        }else {
+            favorite.setText("Favorite");
+            starOff.setVisibility(View.VISIBLE);
+            starOn.setVisibility(View.GONE);
+        }
+
+        favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String key = currentAppointment.getUid();
+                currentAppointment.setFav(!currentAppointment.getFav());
+                Appointment a = new Appointment(currentAppointment.getDescription(), currentAppointment.getDate(),
+                        currentAppointment.getStart(), currentAppointment.getEnd(), key);
+                a.setFav(currentAppointment.getFav());
+                myRef.child(key).setValue(a);
+                if(currentAppointment.getFav()) {
+                    favorite.setText("Unfavorite");
+                    starOff.setVisibility(View.GONE);
+                    starOn.setVisibility(View.VISIBLE);
+                }else {
+                    favorite.setText("Favorite");
+                    starOff.setVisibility(View.VISIBLE);
+                    starOn.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
         Button delete = listItem.findViewById(R.id.buttonDelete);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,6 +9,7 @@ public class Appointment implements Serializable {
 	private Time startTime;
 	private Time endTime;
 	private String uid;
+	private boolean fav;
 
 	public Appointment(){
 	}
@@ -19,8 +20,17 @@ public class Appointment implements Serializable {
 		startTime = start;
 		endTime = end;
 		uid = aUid;
+		fav = false;
 	}
-	
+
+	public boolean getFav(){
+		return fav;
+	}
+
+	public void setFav(boolean abool){
+		fav = abool;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -82,6 +92,12 @@ public class Appointment implements Serializable {
 
 	public int compareTo(Object o){
 		Appointment a = (Appointment)o;
+
+		if(this.getFav() && !a.getFav())
+			return 1;
+		else if(a.getFav() && !this.getFav())
+			return -1;
+
 		if (!(this.getDate().equals(a.getDate()))){
 			return this.getDate().compareTo(a.getDate());
 		}

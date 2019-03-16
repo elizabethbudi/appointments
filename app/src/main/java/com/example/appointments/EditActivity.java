@@ -46,24 +46,28 @@ public class EditActivity extends AppCompatActivity {
 
         if(description.length() > 0 && dateText.length() > 0 && startTimeText.length() > 0 && endTimeText.length() > 0)
         {
-            Date date = new Date(Integer.parseInt(dateText.substring(0,2)), Integer.parseInt(dateText.substring(3,5)), Integer.parseInt(dateText.substring(6,10)));
+            if(dateText.matches("((0[1-9])|1[0-2])/(0[1-9]|[12][0-9]|3[01])/([0-9]){4}") && startTimeText.matches("(([01][0-9]|2[0-3]):([0-5][0-9]))")
+                    && endTimeText.matches("(([01][0-9]|2[0-3]):([0-5][0-9]))")) {
+                Date date = new Date(Integer.parseInt(dateText.substring(0, 2)), Integer.parseInt(dateText.substring(3, 5)), Integer.parseInt(dateText.substring(6, 10)));
 
-            Time startTime = new Time(Integer.parseInt(startTimeText.substring(0,2)), Integer.parseInt(startTimeText.substring(3,5)));
-            Time endTime = new Time(Integer.parseInt(endTimeText.substring(0,2)), Integer.parseInt(endTimeText.substring(3,5)));
-            String key = currentAppointment.getUid();
+                Time startTime = new Time(Integer.parseInt(startTimeText.substring(0, 2)), Integer.parseInt(startTimeText.substring(3, 5)));
+                Time endTime = new Time(Integer.parseInt(endTimeText.substring(0, 2)), Integer.parseInt(endTimeText.substring(3, 5)));
+                String key = currentAppointment.getUid();
 
-            Appointment a = new Appointment(description, date, startTime, endTime, key);
+                Appointment a = new Appointment(description, date, startTime, endTime, key);
 
-            myRef.child(key).setValue(a);
-            Toast.makeText(this, "Successfully edited.", Toast.LENGTH_LONG).show();
-            editDescription.setText("");
-            editDate.setText("");
-            editStartTime.setText("");
-            editEndTime.setText("");
+                myRef.child(key).setValue(a);
+                Toast.makeText(this, "Successfully edited.", Toast.LENGTH_LONG).show();
+                editDescription.setText("");
+                editDate.setText("");
+                editStartTime.setText("");
+                editEndTime.setText("");
 
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(this,"Incorrect format of input.", Toast.LENGTH_LONG).show();
+            }
         }else{
             Toast.makeText(this,"Please fill out all the boxes before posting.", Toast.LENGTH_LONG).show();
         }

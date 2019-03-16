@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "453744836356-8s27p4i28q03bbftc75nrjk4i1hvjse1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appointments",
+            "certificate_hash": "f9220544147d8a496fa90bf3506e45aca1f493cd"
+          }
+        },
+        {
           "client_id": "453744836356-2spe308p5e6koogm1vtbres2kgralqbq.apps.googleusercontent.com",
           "client_type": 3
         }
