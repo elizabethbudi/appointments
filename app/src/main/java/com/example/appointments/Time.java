@@ -1,3 +1,7 @@
+// Created by persons listed below (name, UCI ID) following the rules of pair programming. All work in the project was done collaboratively.
+// Timothy Lin 29663818
+// Elizabeth Budi 83979146
+
 package com.example.appointments;
 
 import java.io.Serializable;
